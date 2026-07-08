@@ -53,13 +53,22 @@ bool ScalarConverter::isFloat( const std::string& param )
 	if (i >= number.size())
 		return (false);
 	if (number.find('.') == 0
-		|| (number.find_first_of('.') != number.find_last_of('.')))
+		|| ((number.find('e') != std::string::npos || number.find('E') != std::string::npos) && (std::count(number.begin(), number.end(), '.') > 2))
+		|| ((number.find('e') == std::string::npos && number.find('E') == std::string::npos) && (std::count(number.begin(), number.end(), '.') > 1)))
+		return (false);
+	if ((number.find_first_of('e') != number.find_last_of('e'))
+		|| (number.find_first_of('E') != number.find_last_of('E')))
 		return (false);
 	if ((static_cast<char>(number[0]) == '+') || (static_cast<char>(number[0]) == '-'))
 		++i;
 	while (i < number.size())
 	{
-		if(!std::isdigit(static_cast<char>(number[i])) && number[i] != '.')
+		if(!std::isdigit(static_cast<char>(number[i])) 
+			&& number[i] != '.' 
+			&& number[i] != 'e'
+			&& number[i] != '+'
+			&& number[i] != '-'
+			&& number[i] != 'E')
 			return (false);
 		++i;
 	}
@@ -77,13 +86,22 @@ bool ScalarConverter::isDouble( const std::string& param )
 	if (i >= param.size())
 		return (false);
 	if (param.find('.') == 0
-		|| (param.find_first_of('.') != param.find_last_of('.')))
+		|| ((param.find('e') != std::string::npos || param.find('E') != std::string::npos) && (std::count(param.begin(), param.end(), '.') > 2))
+		|| ((param.find('e') == std::string::npos && param.find('E') == std::string::npos) && (std::count(param.begin(), param.end(), '.') > 1)))
+		return (false);
+	if ((param.find_first_of('e') != param.find_last_of('e'))
+		|| (param.find_first_of('E') != param.find_last_of('E')))
 		return (false);
 	if ((static_cast<char>(param[0]) == '+') || (static_cast<char>(param[0]) == '-'))
 		++i;
 	while (i < param.size())
 	{
-		if(!std::isdigit(static_cast<char>(param[i])) && param[i] != '.')
+		if(!std::isdigit(static_cast<char>(param[i])) 
+			&& param[i] != '.'
+			&& param[i] != 'e'
+			&& param[i] != '+'
+			&& param[i] != '-'
+			&& param[i] != 'E')
 			return (false);
 		++i;
 	}

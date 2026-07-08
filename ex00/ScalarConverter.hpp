@@ -20,6 +20,8 @@
 # include <climits>
 # include <iomanip>
 # include <cctype>
+# include <sstream>
+# include <algorithm>
 
 class ScalarConverter {
 	private:
