@@ -13,16 +13,33 @@
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
-#include <iostream>
+# include <iostream>
+# include <string>
+# include <cstdlib>
+# include <cerrno>
+# include <climits>
+# include <iomanip>
+# include <cctype>
+
 
 class ScalarConverter {
-	public:
+	private:
 		ScalarConverter( void );
 		ScalarConverter( const ScalarConverter& other );
 		ScalarConverter& operator=( const ScalarConverter& other );
 		~ScalarConverter( void );
 
-		static void	convert( std::string param );
+		static	bool isChar( const std::string& param );
+		static	bool isInt( const std::string& param );
+		static	bool isFloat( const std::string& param );
+		static	bool isDouble( const std::string& param );
+
+		static	void converterChar( const std::string& param );
+		static	void converterInt( const std::string& param );
+		static	void converterFloat( const std::string& param );
+		static	void converterDouble( const std::string& param );
+	public:
+		static void	convert( const std::string& param );
 };
 
 #endif

@@ -35,7 +35,28 @@ ScalarConverter::~ScalarConverter( void )
 	// std::cout << "ScalarConverter Destructor called." << std::endl;
 }
 
-static void	convert( std::string param )
+void	ScalarConverter::convert( const std::string& param )
 {
-	
+	bool (*checks[]) ( const std::string& ) = {
+		isChar,
+		isInt,
+		isFloat,
+		isDouble,
+	};
+
+	void (*converters[]) ( const std::string& ) = {
+		converterChar,
+		converterInt,
+		converterFloat,
+		converterDouble,
+	};
+
+	for(int i = 0; i <= 3; ++i) {
+		if(checks[i](param))
+		{
+			converters[i](param);
+			return ;
+		}
+	}
+	std::cout << "Unknown type: " << param << std::endl;
 }
