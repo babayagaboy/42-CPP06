@@ -15,8 +15,10 @@
 
 int main(int ac, char **av)
 {
-	if (ac != 2)
-		return (1);
+	{
+		float n = {2.44544e+15f};
+		std::cout << n << "\naa";
+	}
 	{
 		ScalarConverter::convert(av[1]);
 	}

@@ -21,7 +21,6 @@
 # include <iomanip>
 # include <cctype>
 
-
 class ScalarConverter {
 	private:
 		ScalarConverter( void );
