@@ -87,7 +87,7 @@ void ScalarConverter::converterFloat( const std::string& param )
 	if (numstring.find('e') != std::string::npos || numstring.find('E') != std::string::npos)
 	{
 		std::cout	<< "int: ";
-		if (num < INT_MAX && num > INT_MIN)
+		if (num < static_cast<float>(INT_MAX) && num > static_cast<float>(INT_MIN))
 			std::cout	<< i << std::endl;
 		else
 			std::cout	<< "Impossible" << std::endl;
@@ -98,7 +98,7 @@ void ScalarConverter::converterFloat( const std::string& param )
 	else
 	{
 		std::cout	<< "int: ";
-		if (num < INT_MAX && num > INT_MIN)
+		if (num < static_cast<float>(INT_MAX) && num > static_cast<float>(INT_MIN))
 			std::cout	<< i << std::endl;
 		else
 			std::cout	<< "Impossible" << std::endl;
@@ -141,7 +141,7 @@ void ScalarConverter::converterDouble( const std::string& param )
 	if (param.find('e') != std::string::npos || param.find('E') != std::string::npos)
 	{
 		std::cout	<< "int: ";
-		if (num < INT_MAX && num > INT_MIN)
+		if (num < static_cast<float>(INT_MAX) && num > static_cast<float>(INT_MIN))
 			std::cout	<< i << std::endl;
 		else
 			std::cout	<< "Impossible" << std::endl;
@@ -152,7 +152,7 @@ void ScalarConverter::converterDouble( const std::string& param )
 	else
 	{
 		std::cout	<< "int: ";
-		if (num < INT_MAX && num > INT_MIN)
+		if (num < static_cast<float>(INT_MAX) && num > static_cast<float>(INT_MIN))
 			std::cout	<< i << std::endl;
 		else
 			std::cout	<< "Impossible" << std::endl;
